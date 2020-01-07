@@ -1,8 +1,17 @@
 <?php
 
 class MessageValidator {
+
+    /**
+     * The message to be validated.
+     * @var array
+     */
     private $message;
 
+    /**
+     * Creates a new {@link MessageValidator}
+     * @param $message array The message that needs to be validated.
+     */
     public function __construct($message)
     {
         $this->message = $message;
@@ -10,6 +19,10 @@ class MessageValidator {
 
     private function getValue($key)
     {
+        if(!isset($this->message[$key])){
+            throw new Exception('Missing field ' . $key);
+        }
+
         return $this->message[$key];
     }
 
@@ -26,7 +39,7 @@ class MessageValidator {
         $msisdn = filter_var($msisdn, FILTER_VALIDATE_INT, array('options' => array('min_range' => 0, 'max_range' => 999999999999999))); //checks variable is an integer that has between 1 and 15 digits
 
         if ($msisdn === false) {
-            throw new FilterException($key); //throws exception if MSISDN is invalid
+            throw new Exception('MSISDN invalid'); //throws exception if MSISDN is invalid
         }
 
         return(int)$msisdn; //returns $msisdn as type int
@@ -45,13 +58,13 @@ class MessageValidator {
         $timeReceived = filter_var($timeReceived, FILTER_SANITIZE_STRING);
 
         if ($timeReceived === false) {
-            throw new FilterException($key);
+            throw new Exception('Invalid time / date');
         }
 
         $date = DateTime::createFromFormat('d/m/Y H:i:s', $timeReceived);
 
         if ($date === false) {
-            throw new InvalidDateException($key);
+            throw new Exception('DateTime object could not be created.');
         }
 
         return $date;
@@ -59,7 +72,7 @@ class MessageValidator {
 
     /**
      * Validates that the bearer is SMS.
-     * @return string The bearer field.
+     * @return string The bearer.
      * @throws Exception If sanitation fails or if bearer is not 'SMS'
      */
     public function validateBearer() {
@@ -69,11 +82,11 @@ class MessageValidator {
         $bearer = filter_var($bearer, FILTER_SANITIZE_STRING);
 
         if ($bearer === false) {
-            throw new FilterException($key);
+            throw new Exception('Invalid bearer.');
         }
 
         if ($bearer !== 'SMS') {
-            throw new IncorrectBearerException($key);
+            throw new Exception('Bearer must be SMS.');
         }
 
         return $bearer;
@@ -92,11 +105,11 @@ class MessageValidator {
         $smsId = filter_var($smsId, FILTER_SANITIZE_STRING);
 
         if($smsId === false){
-            throw new FilterException($key);
+            throw new Exception('Invalid SMS ID');
         }
 
         if ($smsId !== SMS_ID) {
-            throw new IncorrectIDException($key);
+            throw new Exception('SMS ID does not match');
         }
 
         return $smsId;
@@ -112,7 +125,7 @@ class MessageValidator {
         $key = 'S' . $switchNum;
 
         if ($switchNum < 1 || $switchNum > 4) {
-            throw new IncorrectSwitchException($key); //switch doesn't exist
+            throw new Exception('Switch does not exist'); //switch doesn't exist
         }
 
         $switch = $this->getValue($key);
@@ -122,7 +135,7 @@ class MessageValidator {
         $switch = filter_var($switch, FILTER_VALIDATE_INT, array('options' => array('min_range' => 0, 'max_range' => 1)));
 
         if ($switch === false) {
-            throw new FilterException($key);
+            throw new Exception('Invalid switch state.');
         }
 
         if ($switch === 0) {
@@ -131,7 +144,7 @@ class MessageValidator {
             return 'ON';
         }
 
-        throw new IncorrectSwitchStateException($key);
+        throw new Exception('Invalid switch state.');
     }
 
 
@@ -148,7 +161,7 @@ class MessageValidator {
         $fan = filter_var($fan, FILTER_VALIDATE_INT, array('options' => array('min_range' => 0, 'max_range' => 1)));
 
         if ($fan === false) {
-            throw new FilterException($key);
+            throw new Exception('Invalid fan state.');
         }
 
         if ($fan === 0) {
@@ -157,7 +170,7 @@ class MessageValidator {
             return 'REVERSE';
         }
 
-        throw new IncorrectFanStateException($key);
+        throw new Exception('Invalid fan state.');
     }
 
     /**
@@ -173,7 +186,7 @@ class MessageValidator {
         $temp = filter_var($temp, FILTER_VALIDATE_INT, array('options' => array('min_range' => -99, 'max_range' => 999))); // temperature is 3 digits maximum
 
         if ($temp === false) {
-            throw new FilterException($key);
+            throw new Exception('Invalid temperature');
         }
 
         return (int)$temp;
@@ -193,7 +206,7 @@ class MessageValidator {
         $keypad = filter_var($keypad, FILTER_VALIDATE_INT, array('options' => array('min_range' => 0, 'max_range' => 9))); // can only be 1 digit
 
         if ($keypad === false) {
-            throw new FilterException($key);
+            throw new Exception('Invalid keypad input.');
         }
 
         return (int)$keypad;

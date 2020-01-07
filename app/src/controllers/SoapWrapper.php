@@ -1,6 +1,6 @@
 <?php
 
-class SoapClientWrapper{
+class SoapWrapper{
     private $client;
 
     public function __construct()

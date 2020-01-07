@@ -33,4 +33,37 @@ class CircuitStatus {
         $this->temp = $temp;
         $this->keypad = $keypad;
     }
+
+
+    public function getDate(){
+        return $this->date;
+    }
+
+    public function getSwitch1(){
+        return $this->switch1;
+    }
+
+    public function getSwitch2(){
+        return $this->switch2;
+    }
+
+    public function getSwitch3(){
+        return $this->switch3;
+    }
+
+    public function getSwitch4(){
+        return $this->switch4;
+    }
+
+    public function getFan(){
+        return $this->fan;
+    }
+
+    public function getTemp(){
+        return $this->temp;
+    }
+
+    public function getKeypad(){
+        return $this->keypad;
+    }
 }
