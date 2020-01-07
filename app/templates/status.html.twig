@@ -1,0 +1,62 @@
+{% extends 'layout.html.twig' %}
+{% block title %}M2M Circuit - Status{% endblock %}
+{% block content %}
+    <h2>M2M Circuit</h2>
+    <h3>Current status of components:</h3>
+
+    <table style="width:100%">
+        <tr>
+            <th>Switch</th>
+            <th>Status</th>
+        </tr>
+
+        <tr>
+            <td>SWITCH 1</td>
+            <td>SWITCH1STATUS</td>
+        </tr>
+
+        <tr>
+            <td>SWITCH 2</td>
+            <td>SWITCH2STATUS</td>
+        </tr>
+
+        <tr>
+            <td>SWITCH 3</td>
+            <td>SWITCH3STATUS</td>
+        </tr>
+
+        <tr>
+            <td>SWITCH 4</td>
+            <td>SWITCH4STATUS</td>
+        </tr>
+    </table>
+
+    <br>
+    <br>
+
+    <table style="width:100%">
+        <tr>
+            <th>Component</th>
+            <th>Status</th>
+        </tr>
+
+        <tr>
+            <td>FAN</td>
+            <td>FANSTATUS</td>
+        </tr>
+
+        <tr>
+            <td>HEATER</td>
+            <td>HEATERTEMP</td>
+        </tr>
+
+        <tr>
+            <td>KEYPAD</td>
+            <td>PREVNUMBER</td>
+        </tr>
+    </table>
+
+    <br>
+
+    <a href="./">Back</a>
+{% endblock %}
