@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+{% block title %}M2M Circuit - Status{% endblock %}
+{% block content %}
+    <h2>M2M Circuit</h2>
+    <h3>Current status of components:</h3>
+    <form method="post" class="updateform">
+        <p>Switch State</p>
+        <input type="checkbox" name="switchOne">
+        <input type="checkbox" name="switchTwo">
+        <input type="checkbox" name="switchThree">
+        <input type="checkbox" name="switchFour"><br>
+        <p>Fan Direction</p>
+        <select name="fanDir">
+            <option value="forward">Forward</option>
+            <option value="reverse">Reverse</option>
+        </select><br>
+        <p>Heater Temperature</p>
+        <input type="number" name="temperature"><br>
+        <p>Keypad Number</p>
+        <input type="number" name="keypad">
+        <br>
+        <br>
+        <button name="submit">Send</button>
+        <br>
+        <br>
+    </form>
+
+
+
+
+    <a href="./">Back</a>
+{% endblock %}
