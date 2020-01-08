@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+{% block title %}M2M Circuit{% endblock %}
+{% block content %}
+    <h2>M2M Circuit</h2>
+    <h3>SMS Message Board</h3>
+
+    <table>
+        <col width="20%">
+        <col width="40%">
+        <tr>
+            <th>Message Metadata</th>
+            <th>Content</th>
+        </tr>
+
+        {% for i in 0..10 %}
+            <tr>
+                <td>This is Message {{ i }} meta data</td>
+                <td>Message {{ i }} content:</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+
+    <a href="./">Back</a>
+{% endblock %}
