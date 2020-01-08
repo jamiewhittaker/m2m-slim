@@ -99,7 +99,7 @@ class DatabaseWrapper{
             'REPLACE INTO metadata
 			SET msisdn = :msisdn,
 			source = :source,
-			simNumber = :simNumber,
+			simNumber = :sim,
 			name = :name,
 			email = :email
 			');
