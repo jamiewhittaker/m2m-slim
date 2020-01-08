@@ -57,11 +57,11 @@ class DatabaseWrapper{
         $statement->bindParam(':msisdn', $msisdn, PDO::PARAM_STR);
         $statement->bindParam(':date', $date, PDO::PARAM_STR);
         $statement->bindParam(':switch1', $switch1, PDO::PARAM_STR);
-        $statement->bindParam(':switchTwo', $switch2, PDO::PARAM_STR);
-        $statement->bindParam(':switchThree', $switch3, PDO::PARAM_STR);
-        $statement->bindParam(':switchFour', $switch4, PDO::PARAM_STR);
+        $statement->bindParam(':switch2', $switch2, PDO::PARAM_STR);
+        $statement->bindParam(':switch3', $switch3, PDO::PARAM_STR);
+        $statement->bindParam(':switch4', $switch4, PDO::PARAM_STR);
         $statement->bindParam(':fan', $fan, PDO::PARAM_STR);
-        $statement->bindParam(':temperature', $temp, PDO::PARAM_INT);
+        $statement->bindParam(':temp', $temp, PDO::PARAM_INT);
         $statement->bindParam(':keypad', $keypad, PDO::PARAM_INT);
 
         if ($statement->execute() === false) {
