@@ -1,0 +1,67 @@
+{% extends 'layout.html.twig' %}
+{% block title %}M2M Circuit{% endblock %}
+{% block content %}
+    <h2>M2M Circuit</h2>
+    <h3>SMS Message Board</h3>
+
+    <table>
+        <col width="70%">
+        <col width="40%">
+        <tr>
+            <th colspan="2">Components State</th>
+        </tr>
+
+        <tr>
+            <td>Fan Direction</td>
+            <td>Reverse</td>
+        </tr>
+
+        <tr>
+            <td>Heater Temperature</td>
+            <td>65°C</td>
+        </tr>
+
+        <tr>
+            <td>Keypad</td>
+            <td>5</td>
+        </tr>
+
+        {% for i in 0..4 %}
+            <tr>
+                <td>Switch {{ i }}</td>
+                <td>On/Off</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+    <br>
+
+    <table>
+        <col width="40%">
+        <col width="50%">
+        <tr>
+            <th colspan="2">Message Metadata</th>
+        </tr>
+
+        <tr>
+            <td>SIM Number</td>
+            <td>01234 567890</td>
+        </tr>
+
+        <tr>
+            <td>Name</td>
+            <td>John Doe</td>
+        </tr>
+
+        <tr>
+            <td>E-mail Address</td>
+            <td>john.doe@googlemail.com</td>
+        </tr>
+
+    </table>
+
+    <br>
+
+    <a href="./">Back</a>
+{% endblock %}
