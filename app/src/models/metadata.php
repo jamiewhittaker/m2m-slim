@@ -18,10 +18,10 @@ class Metadata
 
     public function __construct($source, $simNumber, $name, $email)
     {
-        $this->source = "";
-        $this->simNumber = 0;
-        $this->name = "";
-        $this->email = "";
+        $this->source = $source;
+        $this->simNumber = $simNumber;
+        $this->name = $name;
+        $this->email = $email;
 
     }
 
