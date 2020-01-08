@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . 'app/src/models/CircuitStatus.php';
+require_once __DIR__ . 'app/src/models/Metadata.php';
 
 class DatabaseWrapper{
     private $database;
@@ -63,6 +64,51 @@ class DatabaseWrapper{
         $statement->bindParam(':fan', $fan, PDO::PARAM_STR);
         $statement->bindParam(':temp', $temp, PDO::PARAM_INT);
         $statement->bindParam(':keypad', $keypad, PDO::PARAM_INT);
+
+        if ($statement->execute() === false) {
+            throw new Exception('Statement did not execute.');
+        }
+    }
+
+    public function getMetadata(){
+        $statement = $this->database->prepare('SELECT * FROM metadata_status');
+
+        if ($statement->execute() == false) {
+            throw new Exception('Statement did not execute.');
+        }
+
+        $result = $statement->fetch();
+
+        $source = $result['source'];
+        $simNumber = $result['sim'];
+        $name = $result['name'];
+        $email = $result['email'];
+
+        $status = new Metadata($source, $simNumber, $name, $email);
+
+        return $status;
+    }
+
+    public function updateMetadata($msisdn, $status) {
+        $source = $status->getSource();
+        $simNumber = $status->getSim();
+        $name = $status->getName();
+        $email = $status->getEmail();
+
+        $statement = $this->database->prepare(
+            'REPLACE INTO metadata
+			SET msisdn = :msisdn,
+			source = :source,
+			simNumber = :simNumber,
+			name = :name,
+			email = :email
+			');
+        $statement->bindParam(':msisdn', $msisdn, PDO::PARAM_STR);
+        $statement->bindParam(':source', $source, PDO::PARAM_STR);
+        $statement->bindParam(':sim', $simNumber, PDO::PARAM_INT);
+        $statement->bindParam(':name', $name, PDO::PARAM_STR);
+        $statement->bindParam(':email', $email, PDO::PARAM_STR);
+
 
         if ($statement->execute() === false) {
             throw new Exception('Statement did not execute.');
