@@ -2,6 +2,7 @@
 
 require_once __DIR__ . 'app/src/models/CircuitStatus.php';
 require_once __DIR__ . 'app/src/models/Metadata.php';
+require_once __DIR__ . 'app/src/models/User.php';
 
 class DatabaseWrapper{
     private $database;
@@ -84,16 +85,16 @@ class DatabaseWrapper{
         $name = $result['name'];
         $email = $result['email'];
 
-        $status = new Metadata($source, $simNumber, $name, $email);
+        $metadata = new Metadata($source, $simNumber, $name, $email);
 
-        return $status;
+        return $metadata;
     }
 
-    public function updateMetadata($msisdn, $status) {
-        $source = $status->getSource();
-        $simNumber = $status->getSim();
-        $name = $status->getName();
-        $email = $status->getEmail();
+    public function updateMetadata($msisdn, $metadata) {
+        $source = $metadata->getSource();
+        $simNumber = $metadata->getSim();
+        $name = $metadata->getName();
+        $email = $metadata->getEmail();
 
         $statement = $this->database->prepare(
             'REPLACE INTO metadata
@@ -108,6 +109,40 @@ class DatabaseWrapper{
         $statement->bindParam(':sim', $simNumber, PDO::PARAM_INT);
         $statement->bindParam(':name', $name, PDO::PARAM_STR);
         $statement->bindParam(':email', $email, PDO::PARAM_STR);
+
+
+        if ($statement->execute() === false) {
+            throw new Exception('Statement did not execute.');
+        }
+    }
+
+    public function getUser(){
+        $statement = $this->database->prepare('SELECT * FROM users');
+
+        if ($statement->execute() == false) {
+            throw new Exception('Statement did not execute.');
+        }
+
+        $result = $statement->fetch();
+
+        $username = $result['username'];
+        $password = $result['password'];
+
+        $status = new User($username, $password);
+
+        return $status;
+    }
+
+    public function updateUser($user) {
+        $username = $user->getUsername();
+        $password = $user->getPassword();
+        $statement = $this->database->prepare(
+            'REPLACE INTO User
+			SET username = :username,
+			password = :password,
+			');
+        $statement->bindParam(':username', $username, PDO::PARAM_STR);
+        $statement->bindParam(':password', $password, PDO::PARAM_STR);
 
 
         if ($statement->execute() === false) {
