@@ -1,18 +1,21 @@
 <?php
 
-require_once __DIR__ . 'app/src/models/CircuitStatus.php';
-require_once __DIR__ . 'app/src/models/Metadata.php';
-require_once __DIR__ . 'app/src/models/User.php';
+namespace App\Controllers;
+
+use \App\Models\CircuitStatus;
+use \App\Models\metadata;
+use \App\Models\user;
+
 
 class DatabaseWrapper{
     private $database;
 
     public function connect($database){
-        $this->database = new PDO('mysql:host=localhost;dbname=m2m_slim', 'm2mslim', 'DMUcoursework1');
+        $this->$database = new \PDO('mysql:host=localhost;dbname=m2m_slim', 'm2mslim', 'DMUcoursework1');
     }
 
     public function getBoardStatus(){
-        $statement = $this->database->prepare('SELECT * FROM board_status');
+        $statement = $this->database->prepare('SELECT * FROM status');
 
         if ($statement->execute() == false) {
             throw new Exception('Statement did not execute.');

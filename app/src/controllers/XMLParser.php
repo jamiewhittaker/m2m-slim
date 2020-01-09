@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Controllers;
+
 class XMLParser{
     private $xmlParser;
     private $toParse;

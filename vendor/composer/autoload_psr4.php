@@ -16,4 +16,5 @@ return array(
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
+    'App\\' => array($baseDir . '/app/src'),
 );

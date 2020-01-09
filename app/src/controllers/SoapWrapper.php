@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Controllers;
+use \SoapClient;
+
 class SoapWrapper{
     private $client;
 
