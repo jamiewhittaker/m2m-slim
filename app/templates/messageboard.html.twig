@@ -1,65 +1,76 @@
 {% extends 'layout.html.twig' %}
 {% block title %}M2M Circuit{% endblock %}
 {% block content %}
-    <h2>M2M Circuit</h2>
-    <h3>SMS Message Board</h3>
+    <div id="banner-div" class="banner">
+        <h2>M2M Circuit</h2>
+        <h3>SMS Message Board</h3>
+    </div>
+    <div class="buffer";></div>
 
-    <table>
-        <col width="70%">
-        <col width="40%">
-        <tr>
-            <th colspan="2">Components State</th>
-        </tr>
+    {% for i in 0..9 %}
+        <div class="messageboard">
+            <table class="messageboard_table">
+                <col width="50%">
+                <tr>
+                    <th colspan="2">Message {{ i + 1 }}</th>
+                </tr>
 
-        <tr>
-            <td>Fan Direction</td>
-            <td>Reverse</td>
-        </tr>
+                <tr>
+                    <td>Fan Direction</td>
+                    <td>
+                        {{ messages[i + 1].fan_direction }}
+                    </td>
+                </tr>
 
-        <tr>
-            <td>Heater Temperature</td>
-            <td>65°C</td>
-        </tr>
+                <tr>
+                    <td>Heater Temperature</td>
+                    <td>
+                        {{ messages[i + 1].temperature }}
+                    </td>
+                </tr>
 
-        <tr>
-            <td>Keypad</td>
-            <td>5</td>
-        </tr>
+                <tr>
+                    <td>Keypad Number</td>
+                    <td>
+                        {{ messages[i + 1].keypad_number }}
+                    </td>
+                </tr>
 
-        {% for i in 0..4 %}
-            <tr>
-                <td>Switch {{ i }}</td>
-                <td>On/Off</td>
-            </tr>
-        {% endfor %}
+                <tr>
+                    <td>Keypad Number</td>
+                    <td>
+                        {{ messages[i + 1].keypad_number }}
+                    </td>
+                </tr>
 
-    </table>
+                {% for x in 1..4 %}
+                    <tr>
+                        <td>Switch {{ x }}</td>
+                        <td>{{ messages[x + 1].switches[x - 1] }}</td>
+                    </tr>
+                {% endfor %}
 
-    <br>
+                <tr>
+                    <td class="bold" colspan="2">Message Origin</td>
+                </tr>
 
-    <table>
-        <col width="40%">
-        <col width="50%">
-        <tr>
-            <th colspan="2">Message Metadata</th>
-        </tr>
+                <tr>
+                    <td>SIM Number</td>
+                    <td>{{ messages[i+1].sim_number }}</td>
+                </tr>
 
-        <tr>
-            <td>SIM Number</td>
-            <td>01234 567890</td>
-        </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>{{ messages[i+1].name }}</td>
+                </tr>
 
-        <tr>
-            <td>Name</td>
-            <td>John Doe</td>
-        </tr>
-
-        <tr>
-            <td>E-mail Address</td>
-            <td>john.doe@googlemail.com</td>
-        </tr>
-
-    </table>
+                <tr>
+                    <td>E-mail Address</td>
+                    <td>{{ messages[i+1].email }}</td>
+                </tr>
+            </table>
+        </div>
+    {% endfor %}
 
     <br>
 
