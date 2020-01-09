@@ -1,83 +1,52 @@
 {% extends 'layout.html.twig' %}
 {% block title %}M2M Circuit - Status{% endblock %}
 {% block content %}
-    <h2>M2M Circuit</h2>
-    <h3>Current status of components:</h3>
+    <div class="banner">
+        <h2>M2M Circuit</h2>
+        <h3>Current status of components:</h3>
+    </div>
 
-    <table style="width:50%">
+    <div class="buffer"></div>
 
-        <tr>
-            <th>Source</th>
-            <td>...</td>
-        </tr>
-
-        <tr>
-            <th>Sim Number</th>
-            <td>...</td>
-        </tr>
+    <table>
+        <col width="70%">
+        <col width="40%">
 
         <tr>
-            <th>Name</th>
-            <td>...</td>
+            <th colspan="2">Switch Status</th>
         </tr>
 
-        <tr>
-            <th>Email</th>
-            <td>...</td>
-        </tr>
-    </table>
-
-    <br>
-
-    <table style="width:100%">
-        <tr>
-            <th>Switch</th>
-            <th>Status</th>
-        </tr>
-
-        <tr>
-            <td>SWITCH 1</td>
-            <td>SWITCH1STATUS</td>
-        </tr>
-
-        <tr>
-            <td>SWITCH 2</td>
-            <td>SWITCH2STATUS</td>
-        </tr>
-
-        <tr>
-            <td>SWITCH 3</td>
-            <td>SWITCH3STATUS</td>
-        </tr>
-
-        <tr>
-            <td>SWITCH 4</td>
-            <td>SWITCH4STATUS</td>
-        </tr>
+        {% for i in 1..4 %}
+            <tr>
+                <td>Switch {{ i }}</td>
+                <td>{{ switches[i - 1] }}</td>
+            </tr>
+        {% endfor %}
     </table>
 
     <br>
     <br>
 
-    <table style="width:100%">
+    <table>
+        <col width="70%">
+        <col width="40%">
         <tr>
-            <th>Component</th>
-            <th>Status</th>
+            <th colspan="2">Components State</th>
         </tr>
 
         <tr>
-            <td>FAN</td>
-            <td>FANSTATUS</td>
+            <td>Fan Direction</td>
+            <td>{{ fan_direction }}</td>
         </tr>
 
         <tr>
-            <td>HEATER</td>
-            <td>HEATERTEMP</td>
+            <td>Heater Temperature</td>
+            <td>{{ temperature }}</td>
         </tr>
 
         <tr>
-            <td>KEYPAD</td>
-            <td>PREVNUMBER</td>
+            <td>Keypad</td>
+            <td>{{ keypad_number }}</td>
         </tr>
     </table>
 
