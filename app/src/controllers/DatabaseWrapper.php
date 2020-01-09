@@ -1,6 +1,8 @@
 <?php
 
 require_once __DIR__ . 'app/src/models/CircuitStatus.php';
+require_once __DIR__ . 'app/src/models/Metadata.php';
+require_once __DIR__ . 'app/src/models/User.php';
 
 class DatabaseWrapper{
     private $database;
@@ -63,6 +65,85 @@ class DatabaseWrapper{
         $statement->bindParam(':fan', $fan, PDO::PARAM_STR);
         $statement->bindParam(':temp', $temp, PDO::PARAM_INT);
         $statement->bindParam(':keypad', $keypad, PDO::PARAM_INT);
+
+        if ($statement->execute() === false) {
+            throw new Exception('Statement did not execute.');
+        }
+    }
+
+    public function getMetadata(){
+        $statement = $this->database->prepare('SELECT * FROM metadata_status');
+
+        if ($statement->execute() == false) {
+            throw new Exception('Statement did not execute.');
+        }
+
+        $result = $statement->fetch();
+
+        $source = $result['source'];
+        $simNumber = $result['sim'];
+        $name = $result['name'];
+        $email = $result['email'];
+
+        $metadata = new Metadata($source, $simNumber, $name, $email);
+
+        return $metadata;
+    }
+
+    public function updateMetadata($msisdn, $metadata) {
+        $source = $metadata->getSource();
+        $simNumber = $metadata->getSim();
+        $name = $metadata->getName();
+        $email = $metadata->getEmail();
+
+        $statement = $this->database->prepare(
+            'REPLACE INTO metadata
+			SET msisdn = :msisdn,
+			source = :source,
+			simNumber = :sim,
+			name = :name,
+			email = :email
+			');
+        $statement->bindParam(':msisdn', $msisdn, PDO::PARAM_STR);
+        $statement->bindParam(':source', $source, PDO::PARAM_STR);
+        $statement->bindParam(':sim', $simNumber, PDO::PARAM_INT);
+        $statement->bindParam(':name', $name, PDO::PARAM_STR);
+        $statement->bindParam(':email', $email, PDO::PARAM_STR);
+
+
+        if ($statement->execute() === false) {
+            throw new Exception('Statement did not execute.');
+        }
+    }
+
+    public function getUser(){
+        $statement = $this->database->prepare('SELECT * FROM users');
+
+        if ($statement->execute() == false) {
+            throw new Exception('Statement did not execute.');
+        }
+
+        $result = $statement->fetch();
+
+        $username = $result['username'];
+        $password = $result['password'];
+
+        $status = new User($username, $password);
+
+        return $status;
+    }
+
+    public function updateUser($user) {
+        $username = $user->getUsername();
+        $password = $user->getPassword();
+        $statement = $this->database->prepare(
+            'REPLACE INTO User
+			SET username = :username,
+			password = :password,
+			');
+        $statement->bindParam(':username', $username, PDO::PARAM_STR);
+        $statement->bindParam(':password', $password, PDO::PARAM_STR);
+
 
         if ($statement->execute() === false) {
             throw new Exception('Statement did not execute.');
