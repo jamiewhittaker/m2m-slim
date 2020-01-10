@@ -4,23 +4,33 @@
     <h2>M2M Circuit</h2>
     <h3>Current status of components:</h3>
     <form method="post" class="updateform">
+        <p>Msisdn</p>
+        <input type="text" name="msisdn">
+        <p>Name</p>
+        <input type="text" name="name">
+        <p>Email</p>
+        <input type="text" name="email">
         <p>Switch State</p>
-        <input type="checkbox" name="switchOne">
-        <input type="checkbox" name="switchTwo">
-        <input type="checkbox" name="switchThree">
-        <input type="checkbox" name="switchFour"><br>
+        <input type="hidden" name="switch1" value="OFF">
+        <input type="checkbox" name="switch1" value="ON">
+        <input type="hidden" name="switch2" value="OFF">
+        <input type="checkbox" name="switch2" value="OFF">
+        <input type="hidden" name="switch3" value="OFF">
+        <input type="checkbox" name="switch3" value="OFF">
+        <input type="hidden" name="switch4" value="OFF">
+        <input type="checkbox" name="switch4" value="OFF"><br>
         <p>Fan Direction</p>
-        <select name="fanDir">
-            <option value="forward">Forward</option>
-            <option value="reverse">Reverse</option>
+        <select name="fan">
+            <option value="forward" name="fan">Forward</option>
+            <option value="reverse" name="fan">Reverse</option>
         </select><br>
         <p>Heater Temperature</p>
-        <input type="number" name="temperature"><br>
+        <input type="number" name="temp"><br>
         <p>Keypad Number</p>
         <input type="number" name="keypad">
         <br>
         <br>
-        <button name="submit">Send</button>
+        <button type="submit" name="submit">Send</button>
         <br>
         <br>
     </form>
