@@ -12,7 +12,7 @@ class SoapWrapper{
     }
 
     public function getMessages(){
-        return $this->client->peekMessages(M2M_USERNAME, M2M_PASSWORD, 10);
+        return $this->client->peekMessages(M2M_USERNAME, M2M_PASSWORD, 200);
         //returns a maximum of 10 messages
     }
 }

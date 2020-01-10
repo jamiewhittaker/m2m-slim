@@ -16,8 +16,8 @@ use \Psr\Http\Message\ResponseInterface as Response;
 $app->get('/status', function(Request $request, Response $response)
 {
 
-    $status = new CircuitStatus("+8",  "Kieran",
-        "kieran@test", "ON", "OFF", "OFF", "OFF", "forward", 50, 2);
+
+    $status = parse();
 
     $msisdn = $status->getMsisdn();
     $name = $status->getName();
@@ -30,9 +30,11 @@ $app->get('/status', function(Request $request, Response $response)
     $temp = $status->getTemp();
     $keypad = $status->getKeypad();
 
-$soap = new SoapWrapper();
+    $soap = new SoapWrapper();
 
-var_dump($soap->getMessages());
+    parse();
+
+
 
 
 
@@ -80,3 +82,12 @@ function testDB() {
 }
 
 
+function parse() {
+    $soap = new SoapWrapper();
+    $xml = new XMLParserW3C();
+    $parsedMessage = $xml->parse($soap->getMessages());
+
+    return $parsedMessage;
+
+    var_dump($xml->parse($soap->getMessages()));
+}
