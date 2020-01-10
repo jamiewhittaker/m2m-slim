@@ -1,0 +1,13 @@
+CREATE TABLE `board_status` (
+                                `date` text NOT NULL,
+                                `name` text NOT NULL,
+                                `email` text NOT NULL,
+                                `msisdn` varchar(15) NOT NULL,
+                                `switch1` enum('OFF','ON') NOT NULL,
+                                `switch2` enum('OFF','ON') NOT NULL,
+                                `switch3` enum('OFF','ON') NOT NULL,
+                                `switch4` enum('OFF','ON') NOT NULL,
+                                `fan` enum('FORWARD','REVERSE') NOT NULL,
+                                `temp` int(3) NOT NULL,
+                                `keypad` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

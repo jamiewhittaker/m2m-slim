@@ -8,7 +8,7 @@ class SoapWrapper{
 
     public function __construct()
     {
-        $this->client = new SoapClient(WSDL_URL);
+        $this->client = new \SoapClient(WSDL_URL);
     }
 
     public function getMessages(){

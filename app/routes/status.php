@@ -2,6 +2,10 @@
 
 use App\Models\CircuitStatus;
 use App\Controllers\DatabaseWrapper;
+use App\Controllers\SoapWrapper;
+use App\Controllers\XMLParserW3C;
+use App\Controllers\MessageValidator;
+
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
@@ -26,7 +30,11 @@ $app->get('/status', function(Request $request, Response $response)
     $temp = $status->getTemp();
     $keypad = $status->getKeypad();
 
-testDB();
+$soap = new SoapWrapper();
+
+var_dump($soap->getMessages());
+
+
 
     return $this->view->render($response, 'status.html.twig',
         ['msisdn' => $msisdn,
@@ -40,6 +48,11 @@ testDB();
             'temp' => $temp,
             'keypad' => $keypad
         ]);
+
+
+
+
+
 
 
 })->setName('status');
@@ -65,4 +78,5 @@ function testDB() {
 
 
 }
+
 

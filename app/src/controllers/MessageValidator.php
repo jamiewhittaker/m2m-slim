@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+
+use Exception;
+
 class MessageValidator {
 
     /**

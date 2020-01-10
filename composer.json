@@ -14,7 +14,9 @@
     "slim/twig-view": "^2.1",
     "monolog/monolog": "^2.0",
     "ext-pdo": "*",
-    "ext-soap": "*"
+    "ext-soap": "*",
+    "ext-xml": "*",
+    "ext-simplexml": "*"
   },
   "autoload": {
     "psr-4": {
