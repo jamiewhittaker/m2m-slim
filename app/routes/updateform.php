@@ -7,14 +7,6 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 $app->get('/updateform', function(Request $request, Response $response){
 
-    $soap = new SoapWrapper();
-    $soap->sendMessages();
-
-
-    if (isset($_POST['submit']))  {
-
-
-    }
 
     return $this->view->render($response, 'updateform.html.twig');
 

@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55f9ba1b-8224-47cf-844b-0c19eb44c3e8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/m2m-slim.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/m2m-slim.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/status.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/status.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/routes/updateform.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/updateform.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/controllers/SoapWrapper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/controllers/SoapWrapper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/updateform.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/updateform.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +105,7 @@
       <workItem from="1578417780822" duration="2350000" />
       <workItem from="1578426502245" duration="1920000" />
       <workItem from="1578599948799" duration="12036000" />
-      <workItem from="1578676276325" duration="2759000" />
+      <workItem from="1578676276325" duration="4540000" />
     </task>
     <servers />
   </component>

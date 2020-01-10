@@ -19,7 +19,7 @@ class SoapWrapper{
 
     public function sendMessages() {
 
-        
+
 
         $msisdn = $_POST['msisdn'];
         $name = $_POST['name'];
