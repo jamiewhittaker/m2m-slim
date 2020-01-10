@@ -85,9 +85,37 @@ function testDB() {
 function parse() {
     $soap = new SoapWrapper();
     $xml = new XMLParserW3C();
+    $db = new DatabaseWrapper();
     $parsedMessage = $xml->parse($soap->getMessages());
+
+    $msisdn = $parsedMessage->getMsisdn();
+    $name = $parsedMessage->getName();
+    $email = $parsedMessage->getEmail();
+    $switch1 = $parsedMessage->getSwitch1();
+    $switch2 = $parsedMessage->getSwitch2();
+    $switch3 = $parsedMessage->getSwitch3();
+    $switch4 = $parsedMessage->getSwitch4();
+    $fan = $parsedMessage->getFan();
+    $temp = $parsedMessage->getTemp();
+    $keypad = $parsedMessage->getKeypad();
+
+    $status = new CircuitStatus($msisdn, $name, $email, $switch1, $switch2, $switch3, $switch4, $fan, $temp, $keypad);
+
+
+
+    try {
+        $db->insertBoardStatus($status);
+    } catch (Exception $e) {
+        var_dump($e);
+    }
+
 
     return $parsedMessage;
 
-    var_dump($xml->parse($soap->getMessages()));
+
+
+
+
+
+
 }

@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55f9ba1b-8224-47cf-844b-0c19eb44c3e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/sql.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/controllers/XMLParserW3C.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/m2m-slim.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/m2m-slim.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/routes/status.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/status.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/controllers/MessageValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/controllers/MessageValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/updateform.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/updateform.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/controllers/SoapWrapper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/controllers/SoapWrapper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/updateform.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/updateform.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,11 +55,19 @@
   </component>
   <component name="ProjectId" id="1W1XgslPdziqnAQTIvOuDyKAgHU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/templates" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RecentsManager">
@@ -76,15 +82,15 @@
       <recent name="D:\xampp\htdocs\m2m-slim\app" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="ServiceViewManager">
+    <option name="viewStates">
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
       </list>
     </option>
   </component>
@@ -102,6 +108,7 @@
       <workItem from="1578417780822" duration="2350000" />
       <workItem from="1578426502245" duration="1920000" />
       <workItem from="1578599948799" duration="12036000" />
+      <workItem from="1578676276325" duration="2759000" />
     </task>
     <servers />
   </component>
@@ -130,5 +137,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="739" y="335" key="NewPhpClassDialog/1920.52.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578660654413" />
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1578676277743">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/1920.52.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578676277743" />
   </component>
 </project>
