@@ -5,7 +5,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 
 
-$app->get('/', function(Request $request, Response $response)
+$app->get('/homepage', function(Request $request, Response $response)
 {
 
 

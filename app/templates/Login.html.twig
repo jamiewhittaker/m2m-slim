@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+{% block title %}M2M Circuit - Update Form{% endblock %}
+{% block content %}
+    <h2>M2M Circuit</h2>
+    <h3>Login/Registration</h3>
+
+
+<form method="post" class="registerForm">
+    <p>Register Username:</p>
+    <input type="text" name="usernameRegister">
+    <p>Register Password:</p>
+    <input type="text" name="passwordRegister">
+    <button type="submit" name="register">Register User</button>
+</form>
+    <form method="post" class="loginForm">
+    <p>Log in Username:</p>
+    <input type="text" name="usernameLogin">
+    <p>Log in Password:</p>
+    <input type="text" name="passwordLogin">
+    <button type="submit" name="login">Log In User</button>
+    </form>
+
+
+
+
+{% endblock %}
