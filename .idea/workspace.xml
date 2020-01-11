@@ -2,11 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55f9ba1b-8224-47cf-844b-0c19eb44c3e8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/controllers/UserLoginValidator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/m2m-slim.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/m2m-slim.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/bootstrap.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/routes/homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/homepage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/routes/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/status.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/status.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/updateform.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/updateform.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/controllers/SoapWrapper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/controllers/SoapWrapper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/controllers/UserDatabaseValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/controllers/UserDatabaseValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/controllers/UserDatabaseWrapper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/controllers/UserDatabaseWrapper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/Login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/Login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/homepage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/homepage.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/layout.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +42,13 @@
     </option>
     <expand />
     <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -71,15 +88,18 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Xampp\htdocs\m2m-slim\public" />
+      <recent name="D:\Xampp\htdocs\m2m-slim" />
+      <recent name="D:\Xampp\htdocs\m2m-slim\app\script" />
+      <recent name="D:\xampp\htdocs\m2m-slim\app" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Xampp\htdocs\m2m-slim\app\templates" />
       <recent name="D:\xampp\htdocs\m2m-slim\app\templates" />
       <recent name="D:\xampp\htdocs\m2m-slim\app\routes" />
       <recent name="D:\xampp\htdocs\m2m-slim\app\src" />
       <recent name="D:\xampp\htdocs\m2m-slim\public\media" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\xampp\htdocs\m2m-slim\app" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -148,10 +168,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.52.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578681056067" />
-    <state x="739" y="335" key="NewPhpClassDialog" timestamp="1578750567161">
+    <state x="739" y="335" key="NewPhpClassDialog" timestamp="1578780459750">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="739" y="335" key="NewPhpClassDialog/0.0.1920.1040/1920.52.1920.1040@0.0.1920.1040" timestamp="1578750567161" />
+    <state x="739" y="335" key="NewPhpClassDialog/0.0.1920.1040/1920.52.1920.1040@0.0.1920.1040" timestamp="1578780459750" />
     <state x="739" y="335" key="NewPhpClassDialog/1920.52.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578684248686" />
     <state x="794" y="444" key="NewPhpFileDialog" timestamp="1578683813321">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -166,5 +186,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.52.1920.1040@0.0.1920.1040" timestamp="1578749765019" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/routes/login.php</url>
+          <line>1</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

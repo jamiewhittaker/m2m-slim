@@ -39,7 +39,7 @@ class UserDatabaseWrapper
                     throw new exception ("Unable to add users");
                 }
             } else {
-                return "error";
+                echo "User already exists";
             }
         }
 
@@ -49,51 +49,6 @@ class UserDatabaseWrapper
                 }
             }
 
-
-
-
-
-
-
-    public function checkUserBool()
-    {
-        $this->database = new PDO('mysql:host=localhost;dbname=m2m_slim', 'm2mslim', 'DMUcoursework1');
-        $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        if (isset($_POST['register'])) {
-            try {
-
-                $this->database = new PDO('mysql:host=localhost;dbname=m2m_slim', 'm2mslim', 'DMUcoursework1');
-                $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                $username = $_POST['usernameRegister'];
-                $password = $_POST['passwordRegister'];
-
-
-                $sql = $this->database->prepare("SELECT 1 FROM `users` WHERE username = :username");
-
-                $sql->bindParam(':username', $username);
-
-                if ($sql->execute() === false) {
-                    throw new exception ("Unable to add users");
-                }
-                $row = $sql->fetch(PDO::FETCH_ASSOC);
-
-                if ($row) {
-                    return true;
-                }
-
-                if (!$row) {
-                    return false;
-                }
-
-            } catch (\PDOException $e) {
-                echo "Error: " . $e->getMessage();
-            }
-
-    }
-
-    }
 }
 
 

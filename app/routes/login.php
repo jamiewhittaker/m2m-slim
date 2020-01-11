@@ -5,11 +5,15 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use App\Models\User;
 use App\Controllers\UserDatabaseWrapper;
 use App\Controllers\UserDatabaseValidator;
+use App\Controllers\UserLoginValidator;
 
 $app->get('/', function(Request $request, Response $response)
 {
+    session_unset();
+
+
     return $this->view->render($response, 'login.html.twig');
-})->setName('login');
+});
 
 
 
@@ -17,28 +21,43 @@ $app->get('/', function(Request $request, Response $response)
 $app->post('/', function(Request $request, Response $response) {
 
     $val = new UserDatabaseValidator();
+    $formVal = new UserLoginValidator();
+
+
 
     if (isset($_POST['register'])) {
-
-        if ($val->validateUserExists()) {
-            return $this->view->render($response, 'login.html.twig');
+        if (!$formVal->validateRegister()) {
+            $err = "<p>Please input both username and password to register</p>";
+            return $this->view->render($response, 'login.html.twig' , ["formError" => $err]);
         } else {
-            addUser();
-            return $this->view->render($response, 'homepage.html.twig');
+
+            if ($val->validateUserExists()) {
+               $err = "<p>User Already Exists</p>";
+                return $this->view->render($response, 'login.html.twig' , ["formError" => $err]);
+            }
+
+            if (!$val->validateUserExists()) {
+                addUser();
+                $_SESSION['username'] = $_POST['usernameRegister'];
+                return $this->view->render($response->withRedirect('homepage'), 'homepage.html.twig');
+
+            }
         }
+
     }
 
     if (isset($_POST['login'])) {
-
-        if ($val->validateUserExists()) {
-
-            return $this->view->render($response->withRedirect('homepage'), 'homepage.html.twig');
-        }
-
-        if (!$val->validateUserExists()) {
-
-            return $this->view->render($response, 'login.html.twig');
-
+        if (!$formVal->validateLogin()) {
+            $err = "<p>Please input both username and password to log in</p>";
+            return $this->view->render($response, 'login.html.twig', ["formError" => $err]);
+        } else {
+            if ($val->validateUserExists()) {
+                $_SESSION['username'] = $_POST['usernameLogin'];
+                return $this->view->render($response->withRedirect('homepage'), 'homepage.html.twig');
+            } else {
+                $err = "<p>User does not exist</p>";
+                return $this->view->render($response, 'login.html.twig', ["formError" => $err]);
+            }
         }
     }
 });
@@ -47,19 +66,16 @@ $app->post('/', function(Request $request, Response $response) {
 
 function addUser() {
 
-    if (isset($_POST['register'])) {
-        $user = new User($_POST['usernameRegister'], $_POST['passwordRegister']);
-    }
-
-    if (isset($_POST['login'])){
-        $user = new User($_POST['usernameLogin'], $_POST['passwordLogin']);
-    }
+    $user = new User($_POST['usernameRegister'], $_POST['passwordRegister']);
+    $user = new User($_POST['usernameLogin'], $_POST['passwordLogin']);
 
 
     $val = new UserDatabaseValidator();
-    $db = new UserDatabaseWrapper();
     $val->validateRegisterInput();
 }
+
+
+
 
 
 

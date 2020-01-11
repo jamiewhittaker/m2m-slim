@@ -17,6 +17,8 @@ $container = new \Slim\Container($settings);
 
 require $app_dir . 'dependencies.php';
 
+session_start();
+
 $app = new \Slim\App($container);
 
 // create a monolog channel
