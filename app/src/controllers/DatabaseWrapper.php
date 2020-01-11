@@ -44,7 +44,6 @@ class DatabaseWrapper
     }
 
 
-
     public function insertBoardStatus($status)
     {
 
@@ -52,7 +51,6 @@ class DatabaseWrapper
 
             $this->database = new PDO('mysql:host=localhost;dbname=m2m_slim', 'm2mslim', 'DMUcoursework1');
             $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
 
 
             $date = date("Y-m-d H:i:s");
@@ -85,7 +83,7 @@ class DatabaseWrapper
 
             if (
                 $sql->execute() === false) {
-                throw new exception(date("Unable to add to database"));
+                throw new exception("Unable to add to database");
             }
 
         } catch (\PDOException $e) {
@@ -94,12 +92,32 @@ class DatabaseWrapper
     }
 
 
+    public function insertUser($user)
+    {
+        try {
+
+            $this->database = new PDO($this->database = new PDO('mysql:host=localhost;dbname=m2m_slim', 'm2mslim', 'DMUcoursework1'));
 
 
+            $username = $user->getUsername();
+            $password = $user->getPassword();
 
 
+            $sql = $this->database->prepare("INSERT INTO  `users` (username, password) VALUES (:username, :password)");
+
+            $sql->bindParam(':username', $username);
+            $sql->bindParam(':password', $password);
+
+            if ($sql->execute() === false) {
+                throw new exception ("Unable to add users");
+            }
 
 
+        } catch (\PDOExcetion $e) {
+            echo "Error: " . $e->getMessage();
+        }
 
+
+    }
 }
 

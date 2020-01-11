@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="55f9ba1b-8224-47cf-844b-0c19eb44c3e8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/messageboard.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/messageboard.html.twig" beforeDir="false" />
-    </list>
+    <list default="true" id="55f9ba1b-8224-47cf-844b-0c19eb44c3e8" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,7 +54,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DatabaseDriversLRU" value="mariadb&#10;mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/templates" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -69,9 +64,6 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\xampp\htdocs\m2m-slim\app" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\xampp\htdocs\m2m-slim\app\templates" />
       <recent name="D:\xampp\htdocs\m2m-slim\app\routes" />
@@ -79,16 +71,24 @@
       <recent name="D:\xampp\htdocs\m2m-slim\public\media" />
       <recent name="D:\xampp\htdocs\m2m-slim\public\css" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\m2m-slim\app" />
+    </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="ServiceViewManager">
+    <option name="viewStates">
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:m2m_slim@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
       </list>
     </option>
   </component>
@@ -106,7 +106,7 @@
       <workItem from="1578417780822" duration="2350000" />
       <workItem from="1578426502245" duration="1920000" />
       <workItem from="1578599948799" duration="12036000" />
-      <workItem from="1578676276325" duration="4793000" />
+      <workItem from="1578676276325" duration="5893000" />
     </task>
     <servers />
   </component>
@@ -127,10 +127,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578645278424">
+    <state x="552" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578681763508">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.52.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578645278424" />
+    <state x="552" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.52.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578681763508" />
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1578681056067">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
