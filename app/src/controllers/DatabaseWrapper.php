@@ -44,7 +44,6 @@ class DatabaseWrapper
     }
 
 
-
     public function insertBoardStatus($status)
     {
 
@@ -52,7 +51,6 @@ class DatabaseWrapper
 
             $this->database = new PDO('mysql:host=localhost;dbname=m2m_slim', 'm2mslim', 'DMUcoursework1');
             $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
 
 
             $date = date("Y-m-d H:i:s");
@@ -115,14 +113,11 @@ class DatabaseWrapper
             }
 
 
-    } catch (\PDOExcetion $e) {
-        echo "Error: " . $e->getMessage();
+        } catch (\PDOExcetion $e) {
+            echo "Error: " . $e->getMessage();
+        }
+
+
     }
-
-
-
-
-
-
 }
 
