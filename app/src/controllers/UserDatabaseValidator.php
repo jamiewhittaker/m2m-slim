@@ -53,7 +53,7 @@ class UserDatabaseValidator
 
         if (isset($_POST['register'])) {
             $username = $_POST['usernameRegister'];
-            $password = $_POST['passwordRegister'];
+            $password = password_hash($_POST['passwordRegister'], PASSWORD_DEFAULT);
 
             /**
              * SQL statement retrieves the count of rows where either the username or password matches,
@@ -64,7 +64,17 @@ class UserDatabaseValidator
         }
         if (isset($_POST['login'])) {
             $username = $_POST['usernameLogin'];
-            $password = $_POST['passwordLogin'];
+
+            $hash = $this->getHash($username);
+            var_dump($hash);
+
+            $password = password_verify($_POST['passwordLogin'], $hash);
+
+            if ($password) {
+                $password = $hash;
+            }
+
+
 
             /**
              * SQL statement retrieves the count of rows where both the username or password matches,
@@ -119,6 +129,39 @@ class UserDatabaseValidator
             } catch (\PDOException $e) {
                 echo "Error: " . $e->getMessage();
             }
+
+        }
+
+
+
+        function getHash($username) {
+            /**
+             * Create a new PDO object connecting to the database
+             */
+            $this->database = new PDO('mysql:host=localhost;dbname=m2m_slim', 'm2mslim', 'DMUcoursework1');
+            $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            /**
+             * Preparing sql statement which will be used to insert data to the board_status table
+             */
+            $sql = $this->database->prepare("SELECT password FROM `users` WHERE username = :username");
+
+            /**
+             * Binding parameters so that they can be used in the sql statement which was prepared
+             */
+
+            $sql->bindParam(':username', $username);
+
+            /**
+             * If execute() returns false a new exception will be thrown
+             */
+            if (
+                $sql->execute() === false) {
+                throw new exception("Error");
+            }
+
+
+            return $sql->fetchColumn();
 
         }
 

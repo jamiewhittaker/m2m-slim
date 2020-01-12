@@ -44,7 +44,7 @@ class UserDatabaseWrapper
                  */
 
                 $username = $_POST['usernameRegister'];
-                $password = $_POST['passwordRegister'];
+                $password =  password_hash($_POST['passwordRegister'], PASSWORD_DEFAULT);
 
                 /**
                  * Prepare statement to insert users
@@ -73,6 +73,9 @@ class UserDatabaseWrapper
                     echo "Error: " . $e->getMessage();
                 }
             }
+
+
+
 
 }
 

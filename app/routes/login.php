@@ -9,6 +9,8 @@ use App\Controllers\UserLoginValidator;
 
 $app->get('/', function(Request $request, Response $response)
 {
+
+
     /**
      * Unset's $_SESSION variables on load
      */
