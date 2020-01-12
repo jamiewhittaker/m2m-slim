@@ -6,6 +6,7 @@
 
 namespace App\Controllers;
 use \SoapClient;
+use \Exception;
 
 class SoapWrapper{
     private $client;
@@ -27,7 +28,7 @@ class SoapWrapper{
 
     public function getMessages(){
         return $this->client->peekMessages(M2M_USERNAME, M2M_PASSWORD, 500);
-        //returns a maximum of 200 messages
+        //returns a maximum of 500 messages
     }
 
 
@@ -53,6 +54,85 @@ class SoapWrapper{
         $temp= $_POST['temp'];
         $keypad= $_POST['keypad'];
 
+
+        /**
+         * First Name must not contain " " character else throws exception
+         */
+        if (strpos($firstName, " ") !== false){
+            throw new Exception("Invalid first name, contains space character");
+        }
+
+        /**
+         * First Name must not be empty else throws exception
+         */
+        if(strlen($firstName)===0){
+            throw new Exception("First Name field is empty");
+        }
+
+
+        /**
+         * Surname must not contain " " character else throws exception
+         */
+        if (strpos($surname, " ") !== false){
+            throw new Exception("Invalid surname, contains space character");
+        }
+
+
+        /**
+         * Surname must not be empty else throws exception
+         */
+        if(strlen($surname)===0){
+            throw new Exception("Surname field is empty");
+        }
+
+
+        /**
+         * Surname must not contain " " character else throws exception
+         */
+        if (strpos($email, " ") !== false){
+            throw new Exception("Invalid email, contains space character");
+        }
+
+        /**
+         * Email must contain "@" character else throws exception
+         */
+        if (strpos($email, "@") !== false){
+
+        } else {
+            throw new Exception("Invalid email, does not contain @ character");
+        }
+
+
+        /**
+         * Email must contain "." character else throws exception
+         */
+        if (strpos($email, ".") !== false){
+
+        } else {
+            throw new Exception("Invalid email, does not contain . character");
+        }
+
+        /**
+         * Email must not be empty else throws exception
+         */
+        if(strlen($firstName)===0){
+            throw new Exception("Email field is empty");
+        }
+
+        /**
+         * Heater temperature must be 3 or less throws exception
+         */
+        if(strlen($temp)>3){
+            throw new Exception("Heater temperature must only be 3 or less digits");
+        }
+
+        if(strlen($keypad)>1){
+            throw new Exception("Keypad input must only be 1 digit");
+        }
+
+
+
+
         /**
          * Creating formatted message to be sent
          */
@@ -60,6 +140,7 @@ class SoapWrapper{
         $message = "ID: circuit123 S1: $switch1 S2: $switch2 S3: $switch3 S4: $switch4 F: $fan T: $temp K: $keypad FN: $firstName SN: $surname E: $email";
 
         var_dump($message);
+
 
         /**
          * Sends the message to the M2M server

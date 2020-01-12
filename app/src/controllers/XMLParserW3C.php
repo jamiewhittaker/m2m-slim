@@ -4,7 +4,7 @@
 namespace App\Controllers;
 use App\Controllers\SoapWrapper;
 use App\Models\CircuitStatus;
-use mysql_xdevapi\Exception;
+use Exception;
 use SimpleXMLElement;
 use SimpleXMLIterator;
 
