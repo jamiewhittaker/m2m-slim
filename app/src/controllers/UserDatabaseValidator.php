@@ -79,7 +79,7 @@ class UserDatabaseValidator
                  * Create PDO object with connection to database.
                  */
 
-                $this->database = new PDO('mysql:host=localhost;dbname=m2m_slim', 'm2mslim', 'DMUcoursework1');
+                $this->database = new PDO('mysql:host='. db_host .';dbname='. db_name,db_username, db_password);
                 $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sql = $this->database->prepare($statement);
 

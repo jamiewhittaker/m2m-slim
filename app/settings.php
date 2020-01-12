@@ -6,6 +6,10 @@ define('M2M_USERNAME', '19_JamieW');
 define('M2M_PASSWORD', 'DMUcoursework1');
 define('SMS_ID', 'circuit123'); // To distinguish our SMS format from others
 
+define('db_host', 'localhost'); // set database host here
+define('db_name', 'm2m_slim'); // set database host here
+define('db_username', 'm2mslim');
+define('db_password', 'DMUcoursework1');
 
 $settings = [
     "settings" => [
