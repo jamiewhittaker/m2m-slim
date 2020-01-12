@@ -61,27 +61,6 @@ $app->get('/status', function(Request $request, Response $response)
 
 
 
-
-
-
-function testDB() {
-    $status = new CircuitStatus("+8",  "Kieran",
-        "kieran@test", "ON", "OFF", "ON", "OFF", "forward", 50, 2);
-
-    $db = new DatabaseWrapper();
-
-
-
-
-    try {
-        $db->insertBoardStatus($status);
-    } catch (Exception $e) {
-    }
-
-
-}
-
-
 /**
  * This function parses the XML of the messages fetched from the SOAP and inserts the Status data into the database.
  */
