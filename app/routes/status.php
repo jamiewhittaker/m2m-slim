@@ -3,8 +3,7 @@
 use App\Models\CircuitStatus;
 use App\Controllers\DatabaseWrapper;
 use App\Controllers\SoapWrapper;
-use App\Controllers\XMLParserW3C;
-use App\Controllers\MessageValidator;
+use App\Controllers\XMLParser;
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
@@ -84,7 +83,7 @@ function testDB() {
 
 function parse() {
     $soap = new SoapWrapper();
-    $xml = new XMLParserW3C();
+    $xml = new XMLParser();
     $db = new DatabaseWrapper();
     $parsedMessage = $xml->parse($soap->getMessages());
 
