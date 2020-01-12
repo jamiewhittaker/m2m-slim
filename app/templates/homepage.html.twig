@@ -1,16 +1,22 @@
 {% extends 'layout.html.twig' %}
 {% block title %}M2M Circuit - Update Form{% endblock %}
 {% block content %}
-    <h2>M2M Circuit</h2>
-    <h2>Welcome {{ welcome }}</h2>
-    <h3>Page Selection</h3>
+    <div class="banner">
+        <h2>M2M Circuit</h2>
+        <h2>Welcome {{ welcome }}</h2>
+    </div>
 
-    <ul>
-        <li><a href='./status'>View current circuit status</a></li>
-        <li><a href='./updateform'>Update current circuit status</a></li>
-    </ul>
+    <div class="buffer"></div>
+    <div style="text-align: center;"><h3>Page Selection</h3></div>
 
-    <button><a href="./">Log Out</a></button>
+    <div id="button-box">
+        <a href='./status' class="button">View current circuit status</a>
+        <a href='./updateform' class="button">Update current circuit status</a>
+    </div>
+
+
+    <br><br>
+    <div style="text-align: center;"><button><a href="./">Log Out</a></button></div>
 
 
 {% endblock %}
