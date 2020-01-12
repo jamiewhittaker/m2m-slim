@@ -3,7 +3,7 @@
  * Used to send the user data to the database
  */
 
-namespace App\controllers;
+namespace App\Controllers;
 
 use App\Models\User;
 use App\Controllers\UserDatabaseValidator;
@@ -44,7 +44,7 @@ class UserDatabaseWrapper
                  */
 
                 $username = $_POST['usernameRegister'];
-                $password = $_POST['passwordRegister'];
+                $password =  password_hash($_POST['passwordRegister'], PASSWORD_DEFAULT);
 
                 /**
                  * Prepare statement to insert users
@@ -68,11 +68,14 @@ class UserDatabaseWrapper
             }
         }
 
-            catch
-                (\PDOException $e) {
-                    echo "Error: " . $e->getMessage();
-                }
-            }
+        catch
+        (\PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+
+
 
 }
 

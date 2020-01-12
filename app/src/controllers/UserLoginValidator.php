@@ -4,7 +4,7 @@
  * Validation for the user input form
  */
 
-namespace App\controllers;
+namespace App\Controllers;
 
 
 class UserLoginValidator

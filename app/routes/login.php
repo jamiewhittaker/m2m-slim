@@ -9,6 +9,8 @@ use App\Controllers\UserLoginValidator;
 
 $app->get('/', function(Request $request, Response $response)
 {
+
+
     /**
      * Unset's $_SESSION variables on load
      */
@@ -40,7 +42,7 @@ $app->post('/', function(Request $request, Response $response) {
         } else {
 
             if ($val->validateUserExists()) {
-               $err = "<p>User Already Exists</p>";
+                $err = "<p>User Already Exists</p>";
                 return $this->view->render($response, 'login.html.twig' , ["formError" => $err]);
             }
 
