@@ -49,7 +49,7 @@ class DatabaseWrapper
              * Preparing sql statement which will be used to insert data to the board_status table
              */
             $sql = $this->database->prepare("INSERT INTO `board_status` (date, name, email, msisdn, switch1, switch2, switch3, switch4, fan, temp, keypad)
-            VALUES (:date, :email , :name, :msisdn, :switch1, :switch2, :switch3, :switch4, :fan, :temp, :keypad)");
+            VALUES (:date, :name , :email, :msisdn, :switch1, :switch2, :switch3, :switch4, :fan, :temp, :keypad)");
 
             /**
              * Binding parameters so that they can be used in the sql statement which was prepared
@@ -78,46 +78,6 @@ class DatabaseWrapper
         } catch (\PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
-    }
-
-
-    public function insertUser($user)
-    {
-        try {
-            /**
-             * Create a new PDO object connecting to the database
-             */
-            $this->database = new PDO($this->database = new PDO('mysql:host=localhost;dbname=m2m_slim', 'm2mslim', 'DMUcoursework1'));
-
-
-            /**
-             * Storing user data retrieved from get methods from the User class
-             */
-            $username = $user->getUsername();
-            $password = $user->getPassword();
-
-            /**
-             * Preparing sql statement to insert a users username and password into the database
-             */
-            $sql = $this->database->prepare("INSERT INTO  `users` (username, password) VALUES (:username, :password)");
-
-
-            /**
-             * Binding the parameters to variables
-             */
-            $sql->bindParam(':username', $username);
-            $sql->bindParam(':password', $password);
-
-            if ($sql->execute() === false) {
-                throw new exception ("Unable to add users");
-            }
-
-
-        } catch (\PDOExcetion $e) {
-            echo "Error: " . $e->getMessage();
-        }
-
-
     }
     
 }
