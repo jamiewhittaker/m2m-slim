@@ -5,10 +5,10 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 
 
-$app->get('/', function(Request $request, Response $response)
+$app->get('/homepage', function(Request $request, Response $response)
 {
 
 
 
-    return $this->view->render($response, 'homepage.html.twig');
-})->setName('homepage');
+    return $this->view->render($response, 'homepage.html.twig', ["welcome" => $_SESSION['username']]);
+})->setName('/homepage' );

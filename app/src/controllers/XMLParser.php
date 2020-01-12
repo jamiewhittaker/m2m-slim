@@ -1,68 +1,110 @@
 <?php
 
+
 namespace App\Controllers;
+use App\Models\CircuitStatus;
+use Exception;
 
-class XMLParser{
-    private $xmlParser;
-    private $toParse;
-    private $currentElementName;
-    private $tempAttributes;
-    private $parsedData = array();
 
-    public function __construct($toParse)
-    {
-        $this->xmlParser = xml_parser_create();
-        $this->toParse = $toParse;
-    }
+// MESSAGE FORMAT: ID: circuit123 S1: 1 S2: 1 S3: 0 S4: 1 F: 0 T: 420 K: 6 FN: Jamie SN: Whittaker E: p17212868@my365.dmu.ac.uk
 
-    public function __destruct()
-    {
-        xml_parser_free($this->xmlParser);
-    }
+class XMLParser
+{
 
-    public function parse(){
-        //allows for the parser to be used within an object
-        xml_set_object($this->xmlParser, $this);
 
-        //sets element handler functions for when each new element is started and ended
-        xml_set_element_handler($this->xmlParser, "startElementHandler", "endElementHandler");
+    public function parse($messages) {
+        $ourMessages = array();
 
-        //sets function to be called when an element contains data
-        xml_set_character_data_handler($this->xmlParser, "processElementData");
+        foreach ($messages as $message) {
+            $xml = simplexml_load_string($message) or Die("ERROR"); //1 message in array
 
-        xml_parse($this->xmlParser, $this->toParse);
-    }
+            $message = $xml->message;
 
-    /**
-     * Processes an element, stores the tag name and extracts the names and values of attributes.
-     */
-    private function startElementHandler($parser, $elementName, $attributes){
-        $this->currentElementName = $elementName;
+            $exploded = explode(" ", (string)$message); //explode message into array
 
-        if (sizeof($attributes) > 0) {
-            foreach ($attributes as $attributeName => $attributeValue) {
-                $tagAttribute = $elementName . "." . $attributeName;
-                $this->tempAttributes[$tagAttribute] = $attributeValue;
+            if(in_array("circuit123", $exploded)){ //if array contains circuit123
+                $msisdn = $xml->sourcemsisdn;
+                array_unshift($ourMessages, $message);
             }
+
+
+
+     } //end of foreach
+
+        $newestMessage = $ourMessages[0];
+        $newestMessageExploded = explode(" ", (string)$newestMessage); //explode newest message into array
+
+        $switch1 = $newestMessageExploded[3];
+        $switch2 = $newestMessageExploded[5];
+        $switch3 = $newestMessageExploded[7];
+        $switch4 = $newestMessageExploded[9];
+        $fan = $newestMessageExploded[11];
+        $temp = $newestMessageExploded[13];
+        $keypad = $newestMessageExploded[15];
+        $firstName = $newestMessageExploded[17];
+        $secondName = $newestMessageExploded[19];
+        $email = $newestMessageExploded[21];
+
+        //SWITCH 1 VALUE
+        if ($switch1 == "1") {
+            $switch1 = "ON";
+        } elseif ($switch1 == "0") {
+            $switch1 = "OFF";
+        } else {
+            throw new Exception("Switch 1 value invalid");
         }
-    }
 
 
-    private function processElementData($parser, $elementData){
-        $this->parsedData[$this->currentElementName] = $elementData;
-
-        if (sizeof($this->tempAttributes) > 0) {
-            foreach ($this->tempAttributes as $name => $value){
-                $this->parsedData[$name] = $value;
-            }
+        //SWITCH 2 VALUE
+        if ($switch2 == "1") {
+            $switch2 = "ON";
+        } elseif ($switch2 == "0") {
+            $switch2 = "OFF";
+        } else {
+            throw new Exception("Switch 2 value invalid");
         }
-    }
 
-    private function endElementHandler($parser, $elementName){
-        // leave empty
-    }
 
-    public function getParsedData(){
-        return $this->parsedData;
-    }
+        //SWITCH 3 VALUE
+        if ($switch3 == "1") {
+            $switch3 = "ON";
+        } elseif ($switch3 == "0") {
+            $switch3 = "OFF";
+        } else {
+            throw new Exception("Switch 3 value invalid");
+        }
+
+
+        //SWITCH 4 VALUE
+        if ($switch4 == "1") {
+            $switch4 = "ON";
+        } elseif ($switch4 == "0") {
+            $switch4 = "OFF";
+        } else {
+            throw new Exception("Switch 4 value invalid");
+        }
+
+
+        //FAN VALUE
+        if ($fan == "0") {
+            $fan = "FORWARD";
+        } elseif ($fan == "1") {
+            $fan = "REVERSE";
+        } else {
+            throw new Exception("Fan value invalid");
+        }
+
+        $name = "$firstName $secondName";
+
+        $parsed = new CircuitStatus($msisdn, $name, $email, $switch1, $switch2, $switch3, $switch4, $fan, $temp, $keypad);
+        return $parsed;
+
+        echo "<br> Switch 1: $switch1, Switch 2: $switch2, Switch 3: $switch3, Switch 4: $switch4, Fan: $fan, Temp: $temp, Keypad: $keypad <br>";
+
+
+        var_dump($ourMessages);
+
+ }
+
+
 }
