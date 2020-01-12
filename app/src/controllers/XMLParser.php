@@ -27,6 +27,7 @@ class XMLParser
             if (array_key_exists("ID", $decoded)){
                 if(($decoded->ID) === "circuit123"){ //if array contains circuit123
                     $msisdn = $xml->sourcemsisdn;
+                    $date = $xml->receivedtime;
                     array_unshift($ourMessages, $message);
                 }
             }
@@ -100,7 +101,7 @@ class XMLParser
 
         $name = "$firstName $secondName";
 
-        $parsed = new CircuitStatus($msisdn, $name, $email, $switch1, $switch2, $switch3, $switch4, $fan, $temp, $keypad);
+        $parsed = new CircuitStatus($msisdn, $name, $email, $switch1, $switch2, $switch3, $switch4, $fan, $temp, $keypad, $date);
         return $parsed;
 
         echo "<br> Switch 1: $switch1, Switch 2: $switch2, Switch 3: $switch3, Switch 4: $switch4, Fan: $fan, Temp: $temp, Keypad: $keypad <br>";

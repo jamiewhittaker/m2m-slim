@@ -28,7 +28,7 @@ $app->get('/status', function(Request $request, Response $response)
     $fan = $status->getFan();
     $temp = $status->getTemp();
     $keypad = $status->getKeypad();
-
+    $date = $status->getDate();
 
 
 
@@ -47,7 +47,8 @@ $app->get('/status', function(Request $request, Response $response)
             'switch4' => $switch4,
             'fan' => $fan,
             'temp' => $temp,
-            'keypad' => $keypad
+            'keypad' => $keypad,
+            'date' => $date
         ]);
 
 

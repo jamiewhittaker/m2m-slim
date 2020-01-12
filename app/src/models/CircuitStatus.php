@@ -17,6 +17,7 @@ class CircuitStatus {
     private $fan;
     private $temp;
     private $keypad;
+    private $date;
 
     /**
      * Creates a new {@link CircuitStatus}.
@@ -30,7 +31,7 @@ class CircuitStatus {
      */
 
 
-    public function __construct($msisdn, $name, $email, $switch1, $switch2, $switch3, $switch4, $fan, $temp, $keypad)
+    public function __construct($msisdn, $name, $email, $switch1, $switch2, $switch3, $switch4, $fan, $temp, $keypad, $date)
     {
     $this->msisdn = $msisdn;
     $this->name = $name;
@@ -42,6 +43,7 @@ class CircuitStatus {
     $this->fan = $fan;
     $this->temp = $temp;
     $this->keypad = $keypad;
+    $this->date = $date;
 
     }
 
@@ -86,6 +88,10 @@ class CircuitStatus {
         return $this->keypad;
     }
 
+    public function getDate(){
+        return $this->date;
+    }
+
     public function updateCircuit() {
         if (isset($_POST['name'])) {
             $this->name = $_POST['name'];
@@ -123,6 +129,10 @@ class CircuitStatus {
         if (isset($_POST['keypad'])) {
             $this->keypad= $_POST['keypad'];
         }
+        if (isset($_POST['date'])) {
+            $this->date= $_POST['date'];
+        }
+
     }
 
 
