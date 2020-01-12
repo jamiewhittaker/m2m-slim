@@ -42,8 +42,8 @@ class SoapWrapper{
          * the string which is sent to the server.
          */
 
-        $msisdn = $_POST['msisdn'];
-        $name = $_POST['name'];
+        $firstName = $_POST['firstname'];
+        $surname = $_POST['surname'];
         $email= $_POST['email'];
         $switch1=  $_POST['switch1'];
         $switch2=  $_POST['switch2'];
@@ -57,7 +57,7 @@ class SoapWrapper{
          * Creating formatted message to be sent
          */
 
-        $message = "ID: circuit123 S1: $switch1 S2: $switch2 S3: $switch3 S4: $switch4 F: $fan T: $temp K: $keypad";
+        $message = "ID: circuit123 S1: $switch1 S2: $switch2 S3: $switch3 S4: $switch4 F: $fan T: $temp K: $keypad FN: $firstName SN: $surname E: $email";
 
         var_dump($message);
 
