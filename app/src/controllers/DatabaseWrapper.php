@@ -1,4 +1,8 @@
 <?php
+/**
+ * Controller for retrieving the parameters from the CircuitStatus class and sending it over to the database
+ */
+
 
 namespace App\Controllers;
 
@@ -13,46 +17,21 @@ class DatabaseWrapper
 {
     private $database;
 
-    public function getBoardStatus()
-    {
-
-        $this->database = new PDO('mysql:host=localhost;dbname=m2m_slim', 'm2mslim', 'DMUcoursework1');
-
-        $statement = $this->database->prepare('SELECT * FROM board_status');
-
-        if ($statement->execute() == false) {
-            throw new Exception('Statement did not execute.');
-        }
-
-        $result = $statement->fetch();
-
-        $msidn = $result['msidn'];
-        $date = DateTime::createFromFormat('d/m/Y H:i:s', $result['date']);
-        $name = $result['name'];
-        $email = $result['email'];
-        $switch1 = $result['switch1'];
-        $switch2 = $result['switch2'];
-        $switch3 = $result['switch3'];
-        $switch4 = $result['switch4'];
-        $fan = $result['fan'];
-        $temp = (int)$result['temp'];
-        $keypad = (int)$result['keypad'];
-
-        $status = new CircuitStatus($msidn, $name, $email, $date, $switch1, $switch2, $switch3, $switch4, $fan, $temp, $keypad);
-
-        return $status;
-    }
-
-
     public function insertBoardStatus($status)
     {
 
         try {
 
+            /**
+             * Create a new PDO object connecting to the database
+             */
             $this->database = new PDO('mysql:host=localhost;dbname=m2m_slim', 'm2mslim', 'DMUcoursework1');
             $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-
+            /**
+             * Getting the metadata and circuit board status using get methods from the CircuitStatus class
+             * to store in variables.
+             */
             $date = date("Y-m-d H:i:s");
             $name = $status->getName();
             $email = $status->getEmail();
@@ -65,8 +44,16 @@ class DatabaseWrapper
             $temp = $status->getTemp();
             $keypad = $status->getKeypad();
 
+
+            /**
+             * Preparing sql statement which will be used to insert data to the board_status table
+             */
             $sql = $this->database->prepare("INSERT INTO `board_status` (date, name, email, msisdn, switch1, switch2, switch3, switch4, fan, temp, keypad)
             VALUES (:date, :email , :name, :msisdn, :switch1, :switch2, :switch3, :switch4, :fan, :temp, :keypad)");
+
+            /**
+             * Binding parameters so that they can be used in the sql statement which was prepared
+             */
 
             $sql->bindParam(':date', $date);
             $sql->bindParam(':email', $email);
@@ -80,7 +67,9 @@ class DatabaseWrapper
             $sql->bindParam(':temp', $temp);
             $sql->bindParam(':keypad', $keypad);
 
-
+            /**
+             * If execute() returns false a new exception will be thrown
+             */
             if (
                 $sql->execute() === false) {
                 throw new exception("Unable to add to database");
@@ -95,16 +84,27 @@ class DatabaseWrapper
     public function insertUser($user)
     {
         try {
-
+            /**
+             * Create a new PDO object connecting to the database
+             */
             $this->database = new PDO($this->database = new PDO('mysql:host=localhost;dbname=m2m_slim', 'm2mslim', 'DMUcoursework1'));
 
 
+            /**
+             * Storing user data retrieved from get methods from the User class
+             */
             $username = $user->getUsername();
             $password = $user->getPassword();
 
-
+            /**
+             * Preparing sql statement to insert a users username and password into the database
+             */
             $sql = $this->database->prepare("INSERT INTO  `users` (username, password) VALUES (:username, :password)");
 
+
+            /**
+             * Binding the parameters to variables
+             */
             $sql->bindParam(':username', $username);
             $sql->bindParam(':password', $password);
 

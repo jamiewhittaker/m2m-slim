@@ -1,4 +1,8 @@
 <?php
+/**
+ * Class for circuit board data
+ */
+
 
 namespace App\Models;
 

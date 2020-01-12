@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Validation for the user input form
+ */
 
 namespace App\controllers;
 

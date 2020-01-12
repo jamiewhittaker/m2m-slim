@@ -9,6 +9,10 @@ use App\Controllers\UserLoginValidator;
 
 $app->get('/', function(Request $request, Response $response)
 {
+    /**
+     * Unset's $_SESSION variables on load
+     */
+
     session_unset();
 
 
@@ -24,6 +28,10 @@ $app->post('/', function(Request $request, Response $response) {
     $formVal = new UserLoginValidator();
 
 
+    /**
+     * Firstly checks if the register button has been set (pressed) and
+     * then checks if the form data has been filled in correctly.
+     */
 
     if (isset($_POST['register'])) {
         if (!$formVal->validateRegister()) {
@@ -46,6 +54,10 @@ $app->post('/', function(Request $request, Response $response) {
 
     }
 
+    /**
+     * Same as the register check
+     */
+
     if (isset($_POST['login'])) {
         if (!$formVal->validateLogin()) {
             $err = "<p>Please input both username and password to log in</p>";
@@ -63,13 +75,11 @@ $app->post('/', function(Request $request, Response $response) {
 });
 
 
+/**
+ * Creates a new UserDatabaseValidator object and runs method to validate input.
+ */
 
 function addUser() {
-
-    $user = new User($_POST['usernameRegister'], $_POST['passwordRegister']);
-    $user = new User($_POST['usernameLogin'], $_POST['passwordLogin']);
-
-
     $val = new UserDatabaseValidator();
     $val->validateRegisterInput();
 }
