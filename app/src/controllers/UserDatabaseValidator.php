@@ -12,6 +12,7 @@ class UserDatabaseValidator
 {
 
    private $database;
+   private $hashedPassword;
 
 
     /**
@@ -66,14 +67,16 @@ class UserDatabaseValidator
             $username = $_POST['usernameLogin'];
 
             $hash = $this->getHash($username);
-            var_dump($hash);
+
+            /**
+             * Used to verify hashed password retrived from the server to see if it matches with user input
+             */
 
             $password = password_verify($_POST['passwordLogin'], $hash);
 
             if ($password) {
                 $password = $hash;
             }
-
 
 
             /**
@@ -133,6 +136,10 @@ class UserDatabaseValidator
         }
 
 
+    /**
+     * Function used to get the hashed password from the user database
+     *
+     */
 
         function getHash($username) {
             /**
@@ -142,7 +149,7 @@ class UserDatabaseValidator
             $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             /**
-             * Preparing sql statement which will be used to insert data to the board_status table
+             * Preparing sql statement which will be used to select hashed password from db
              */
             $sql = $this->database->prepare("SELECT password FROM `users` WHERE username = :username");
 
@@ -160,8 +167,11 @@ class UserDatabaseValidator
                 throw new exception("Error");
             }
 
-
-            return $sql->fetchColumn();
+            /**
+             * returns hashed password as string
+             */
+            $this->hashedPassword = $sql->fetchColumn();
+            return $this->hashedPassword;
 
         }
 
