@@ -86,38 +86,12 @@ class SoapWrapper{
         }
 
 
-        /**
-         * Surname must not contain " " character else throws exception
-         */
-        if (strpos($email, " ") !== false){
-            throw new Exception("Invalid email, contains space character");
-        }
 
-        /**
-         * Email must contain "@" character else throws exception
-         */
-        if (strpos($email, "@") !== false){
-
-        } else {
-            throw new Exception("Invalid email, does not contain @ character");
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+            throw new Exception('Invalid email address');
         }
 
 
-        /**
-         * Email must contain "." character else throws exception
-         */
-        if (strpos($email, ".") !== false){
-
-        } else {
-            throw new Exception("Invalid email, does not contain . character");
-        }
-
-        /**
-         * Email must not be empty else throws exception
-         */
-        if(strlen($firstName)===0){
-            throw new Exception("Email field is empty");
-        }
 
         /**
          * Heater temperature must be 3 or less throws exception

@@ -33,6 +33,9 @@ $app->get('/status', function(Request $request, Response $response)
 
 
 
+    /**
+     * Feeds the variables to the status.html twig template.
+     */
 
     return $this->view->render($response, 'status.html.twig',
         ['msisdn' => $msisdn,
@@ -78,29 +81,18 @@ function testDB() {
 }
 
 
+/**
+ * This function parses the XML of the messages fetched from the SOAP and inserts the Status data into the database.
+ */
+
 function parse() {
     $soap = new SoapWrapper();
     $xml = new XMLParser();
     $db = new DatabaseWrapper();
     $parsedMessage = $xml->parse($soap->getMessages());
 
-    $msisdn = $parsedMessage->getMsisdn();
-    $name = $parsedMessage->getName();
-    $email = $parsedMessage->getEmail();
-    $switch1 = $parsedMessage->getSwitch1();
-    $switch2 = $parsedMessage->getSwitch2();
-    $switch3 = $parsedMessage->getSwitch3();
-    $switch4 = $parsedMessage->getSwitch4();
-    $fan = $parsedMessage->getFan();
-    $temp = $parsedMessage->getTemp();
-    $keypad = $parsedMessage->getKeypad();
-
-    $status = new CircuitStatus($msisdn, $name, $email, $switch1, $switch2, $switch3, $switch4, $fan, $temp, $keypad);
-
-
-
     try {
-        $db->insertBoardStatus($status);
+        $db->insertBoardStatus($parsedMessage);
     } catch (Exception $e) {
         var_dump($e);
     }

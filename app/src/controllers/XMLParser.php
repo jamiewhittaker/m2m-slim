@@ -1,16 +1,19 @@
 <?php
 
-
 namespace App\Controllers;
 use App\Models\CircuitStatus;
 use Exception;
 
 
-// MESSAGE FORMAT: ID: circuit123 S1: 1 S2: 1 S3: 0 S4: 1 F: 0 T: 420 K: 6 FN: Jamie SN: Whittaker E: p17212868@my365.dmu.ac.uk
+/**
+ * The XMLParser class takes an array of messages fetched from the SOAP server and
+ * runs them through a foreach to add messages with our 'ID' tag (circuit123 for test purposes)
+ * to a new array. The newest message is then taken from the new array and split into the
+ * circuit status information. A CircuitStatus object is then returned.
+ */
 
 class XMLParser
 {
-
 
     public function parse($messages) {
         $ourMessages = array();
