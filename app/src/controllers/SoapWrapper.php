@@ -104,7 +104,7 @@ class SoapWrapper{
             throw new Exception("Keypad input must only be 1 digit");
         }
 
-        $array = array("ID"=>"circuit123", "S1"=>$switch1, "S2"=>$switch2, "S3"=>$switch1, "S4"=>$switch4, "F"=>$fan, "T"=>$temp, "K"=>$keypad, "FN"=>$firstName, "SN"=>$surname, "E"=>$email);
+        $array = array("ID"=>SMS_ID, "S1"=>$switch1, "S2"=>$switch2, "S3"=>$switch1, "S4"=>$switch4, "F"=>$fan, "T"=>$temp, "K"=>$keypad, "FN"=>$firstName, "SN"=>$surname, "E"=>$email);
 
         /**
          * Creating formatted message to be sent

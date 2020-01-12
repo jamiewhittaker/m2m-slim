@@ -25,7 +25,7 @@ class XMLParser
             $decoded = json_decode($message);
 
             if (array_key_exists("ID", $decoded)){
-                if(($decoded->ID) === "circuit123"){ //if array contains circuit123
+                if(($decoded->ID) === SMS_ID){ //if array contains circuit123
                     $msisdn = $xml->sourcemsisdn;
                     $date = $xml->receivedtime;
                     array_unshift($ourMessages, $message);
