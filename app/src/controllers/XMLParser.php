@@ -99,6 +99,8 @@ class XMLParser
             throw new Exception("Fan value invalid");
         }
 
+
+
         $name = "$firstName $secondName";
 
         $parsed = new CircuitStatus($msisdn, $name, $email, $switch1, $switch2, $switch3, $switch4, $fan, $temp, $keypad, $date);
