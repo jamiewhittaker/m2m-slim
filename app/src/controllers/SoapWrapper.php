@@ -130,23 +130,21 @@ class SoapWrapper{
             throw new Exception("Keypad input must only be 1 digit");
         }
 
-
-
+        $array = array("ID"=>"circuit123", "S1"=>$switch1, "S2"=>$switch2, "S3"=>$switch1, "S4"=>$switch4, "F"=>$fan, "T"=>$temp, "K"=>$keypad, "FN"=>$firstName, "SN"=>$surname, "E"=>$email);
 
         /**
          * Creating formatted message to be sent
          */
 
-        $message = "ID: circuit123 S1: $switch1 S2: $switch2 S3: $switch3 S4: $switch4 F: $fan T: $temp K: $keypad FN: $firstName SN: $surname E: $email";
 
-        var_dump($message);
+        var_dump(json_encode($array));
 
 
         /**
          * Sends the message to the M2M server
          */
 
-       $this->client->sendMessage(M2M_USERNAME, M2M_PASSWORD, "+447817814149",$message, false, "SMS");
+       $this->client->sendMessage(M2M_USERNAME, M2M_PASSWORD, "+447817814149",json_encode($array), false, "SMS");
     }
 
 }

@@ -19,12 +19,13 @@ class XMLParser
             $xml = simplexml_load_string($message) or Die("ERROR"); //1 message in array
 
             $message = $xml->message;
+            $decoded = json_decode($message);
 
-            $exploded = explode(" ", (string)$message); //explode message into array
-
-            if(in_array("circuit123", $exploded)){ //if array contains circuit123
-                $msisdn = $xml->sourcemsisdn;
-                array_unshift($ourMessages, $message);
+            if (array_key_exists("ID", $decoded)){
+                if(($decoded->ID) === "circuit123"){ //if array contains circuit123
+                    $msisdn = $xml->sourcemsisdn;
+                    array_unshift($ourMessages, $message);
+                }
             }
 
 
@@ -32,18 +33,18 @@ class XMLParser
      } //end of foreach
 
         $newestMessage = $ourMessages[0];
-        $newestMessageExploded = explode(" ", (string)$newestMessage); //explode newest message into array
+        $decodedMessage = json_decode($newestMessage);
 
-        $switch1 = $newestMessageExploded[3];
-        $switch2 = $newestMessageExploded[5];
-        $switch3 = $newestMessageExploded[7];
-        $switch4 = $newestMessageExploded[9];
-        $fan = $newestMessageExploded[11];
-        $temp = $newestMessageExploded[13];
-        $keypad = $newestMessageExploded[15];
-        $firstName = $newestMessageExploded[17];
-        $secondName = $newestMessageExploded[19];
-        $email = $newestMessageExploded[21];
+        $switch1 = $decodedMessage->S1;
+        $switch2 = $decodedMessage->S2;
+        $switch3 = $decodedMessage->S3;
+        $switch4 = $decodedMessage->S4;
+        $fan = $decodedMessage->F;
+        $temp = $decodedMessage->T;
+        $keypad = $decodedMessage->K;
+        $firstName = $decodedMessage->FN;
+        $secondName = $decodedMessage->SN;
+        $email = $decodedMessage->E;
 
         //SWITCH 1 VALUE
         if ($switch1 == "1") {

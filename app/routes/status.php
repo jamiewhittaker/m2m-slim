@@ -16,7 +16,7 @@ $app->get('/status', function(Request $request, Response $response)
 {
 
 
-    $status = parse();
+    $status = @parse();
 
     $msisdn = $status->getMsisdn();
     $name = $status->getName();
@@ -29,9 +29,6 @@ $app->get('/status', function(Request $request, Response $response)
     $temp = $status->getTemp();
     $keypad = $status->getKeypad();
 
-    $soap = new SoapWrapper();
-
-    parse();
 
 
 
